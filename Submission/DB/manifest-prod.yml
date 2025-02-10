@@ -1,0 +1,12 @@
+---
+applications:
+  - name: db-image-generator
+    buildpack: java_buildpack
+    memory: 1GB
+    path: target/db-image-generator-0.0.1-SNAPSHOT.jar
+    services:
+      - openai-service
+    env:
+      spring.profiles.active: cloud,oracle,prodcf
+      JAVA_OPTS: '-Duser.timezone=America/New_York'
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+}}'
