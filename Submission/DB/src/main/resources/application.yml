@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: db-image-generator
+  config:
+    import: 'optional:configserver:${CONFIG_SERVER_ADDRESS}'
+  cloud:
+    discovery:
+      enabled: true
+  ai:
+    openai:
+      api-key: ${vcap.services.openai-service.credentials.OPENAI_API_KEY}
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /index.html
