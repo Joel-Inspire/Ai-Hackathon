@@ -1,0 +1,43 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE/editor specific files
+.vs/
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# FastAPI app-specific files
+*.log
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+.coverage
+*.cover
+coverage.xml
+*.hypothesis/
+
+# mypy
+.mypy_cache/
+
+# Pipenv files
+Pipfile.lock
+
+# Poetry files
+poetry.lock
+

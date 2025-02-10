@@ -1,0 +1,9 @@
+﻿streamlit
+elasticsearch
+sentence-transformers
+requests
+langchain
+torch
+pypdf  # pdf conversion
+beautifulsoup4  # html conversion
+watchdog
