@@ -1,0 +1,288 @@
+The following files were used as context for generating this wiki page:
+
+.gitignore
+LICENSE
+README.md
+Submission/DB/.gitignore
+Submission/DB/README.md
+Submission/DB/manifest-dev.yml
+Submission/DB/manifest-prod.yml
+Submission/DB/pom.xml
+Submission/WeSuite/Bigger-Data/README.md
+This document provides a high-level overview of the AI-Hackathon repository, explaining its purpose, primary systems, and architecture. The repository consists of three main AI-powered systems that address different business needs through various AI technologies.
+
+For specific details about the repository structure, see Repository Structure.
+
+Purpose
+The repository contains three specialized AI systems:
+
+DB Image Generator - A Spring Boot application that generates product catalog images using OpenAI's image generation capabilities
+WeSuite Bigger-Data - A document search and retrieval system using Elasticsearch and LLMs
+TTG Document Generation - A document template generation system with AI integration
+These systems demonstrate different applications of AI technologies to solve business problems related to content generation, document search, and templating.
+
+Sources: 
+Submission/DB/README.md
+3-8
+ 
+Submission/WeSuite/Bigger-Data/README.md
+1-4
+
+Repository Architecture
+The following diagram illustrates the three main systems and their core components:
+
+Repository Systems Overview
+AiHackathonRepository
+
+TTGDocumentGeneration
+
+uses
+
+generates
+
+sends
+
+Document Generator
+
+AI Wrapper
+
+Document Templates
+
+Email Documents
+
+WeSuiteBiggerData
+
+uses
+
+uses
+
+provides
+
+WeAssist
+StreamlitApplication
+
+Elasticsearch
+
+Ollama LLM
+
+Document Search
+
+DBImageGenerator
+
+uses
+
+generates
+
+DBImageGenerator
+SpringBootApplication
+
+OpenAI API
+
+Catalog Images
+
+Sources: 
+Submission/DB/README.md
+3-8
+ 
+Submission/WeSuite/Bigger-Data/README.md
+1-17
+
+System Interactions and Data Flow
+This diagram shows how the three systems interact with users and external services:
+
+Systems Interaction Flow
+WeSuite Bigger-Data
+
+TTG Document System
+
+DB Image Generator
+
+1.Requests document
+
+2.Requests image
+
+3.Searches documents
+
+Uses
+
+Returns image data
+
+Returns catalog image
+
+Prompts
+
+Generates content
+
+Delivers document
+
+Searches
+
+Processes query
+
+Returns results
+
+Returns response
+
+Returns answer
+
+User
+
+TTGDocumentGenerator
+
+DBImageGenerator
+
+WeAssist
+
+OpenAI API
+
+AI Wrapper
+
+Elasticsearch
+
+Ollama LLM
+
+Sources: 
+Submission/DB/README.md
+7-8
+ 
+Submission/WeSuite/Bigger-Data/README.md
+12-18
+
+Key Systems Overview
+DB Image Generator
+A Spring Boot application that generates product catalog images using AI. This system is the most extensively documented component in the repository.
+
+Technical Stack:
+
+Spring Boot 3.4.2
+Spring AI 1.0.0-M5 (OpenAI integration)
+Spring Cloud (Eureka for service discovery)
+Cloud Foundry deployment environment
+Key Features:
+
+AI image generation based on category and prompt
+Integration with DB Commerce catalog service
+Microservice architecture with service discovery
+For more detailed information about this system, see DB Image Generator System.
+
+Sources: 
+Submission/DB/pom.xml
+11-15
+ 
+Submission/DB/README.md
+3-8
+ 
+Submission/DB/manifest-dev.yml
+1-12
+
+WeSuite Bigger-Data (WeAssist)
+An LLM-driven document search system that enables efficient retrieval of relevant document chunks using semantic search and keyword matching.
+
+Technical Stack:
+
+Elasticsearch for vector and full-text search
+Hugging Face Transformers/Sentence-Transformers for embeddings
+Ollama for local LLM deployment
+Python and Streamlit for application interface
+Key Features:
+
+Hybrid search combining BM25 keyword search and vector similarity
+Document chunking and embedding generation
+Interactive chat interface with document context
+For more detailed information about this system, see WeSuite Bigger-Data System.
+
+Sources: 
+Submission/WeSuite/Bigger-Data/README.md
+1-18
+
+TTG Document Generation
+A document generation system that creates document templates with AI assistance and can deliver them via email.
+
+Technical Stack:
+
+AI wrapper architecture for provider abstraction
+Integration with Gemini and OpenAI
+Email delivery service
+Business entity integration
+Key Features:
+
+Document template generation
+AI-powered content creation
+Email document delivery
+For more detailed information about this system, see TTG Document Generation System.
+
+Technical Component Mapping
+The following table shows the mapping between business concepts and their corresponding code implementations:
+
+Business Concept	Implementation Component	System
+Catalog Image Generation	DBImageGenerator	DB Image Generator
+Document Search	WeAssist + Elasticsearch	WeSuite Bigger-Data
+AI Content Generation	AIWrapperFactory	TTG Document Generation
+LLM Query Processing	Ollama Integration	WeSuite Bigger-Data
+Email Delivery	FluentEmail	TTG Document Generation
+DB Image Generator Architecture
+As the most prominently documented system, here is a more detailed view of the DB Image Generator architecture:
+
+Services
+
+Controllers
+
+Client Applications
+
+API Gateway
+
+Eureka Discovery Server
+
+DBImageGeneratorApplication
+
+Other Microservices
+
+Catalog Client
+
+DB Commerce Catalog Service
+
+Image AI API Service
+
+OpenAI API
+
+Image Controller
+
+Main Image Service
+
+Sources: 
+Submission/DB/pom.xml
+35-71
+ 
+Submission/DB/README.md
+3-8
+
+Development and Deployment
+The repository includes configuration for different deployment environments:
+
+Development: Configuration in manifest-dev.yml for Cloud Foundry deployment
+Production: Configuration in manifest-prod.yml for Cloud Foundry deployment
+The DB Image Generator system, in particular, requires specific environment variables for operation, including OpenAI API credentials provided through service bindings in Cloud Foundry.
+
+Sources: 
+Submission/DB/manifest-dev.yml
+1-12
+ 
+Submission/DB/manifest-prod.yml
+1-12
+ 
+Submission/DB/README.md
+11-20
+
+Licensing and Contributions
+The repository is licensed under the MIT License, which allows for free use, modification, and distribution of the code, subject to the license conditions.
+
+Sources: 
+LICENSE
+1-21
+
+For detailed information about each system's architecture, workflows, and implementations, refer to their dedicated pages:
+
+Repository Structure
+DB Image Generator System
+WeSuite Bigger-Data System
+TTG Document Generation System
